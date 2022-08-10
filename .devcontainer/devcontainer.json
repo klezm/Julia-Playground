@@ -4,19 +4,53 @@
 {
 	"name": "Julia (Community)",
 	"image": "ghcr.io/julia-vscode/julia-devcontainer",
+	// "build":{
+	// 	// "dockerfile": "https://raw.githubusercontent.com/julia-vscode/julia-devcontainer/master/Dockerfile",
+	// 	"dockerfile": "Dockerfile",
+	// 	"args": {
+	// 		"JULIA_VERSION": "1",
+	// 		"INSTALL_ZSH": "true",
+	// 		"UPGRADE_PACKAGES": "true",
+	// 		"COMMON_SCRIPT_SOURCE": "https://raw.githubusercontent.com/microsoft/vscode-dev-containers/master/script-library/common-debian.sh",
+	// 		"COMMON_SCRIPT_SHA": "dev-mode",
+	// 		"USERNAME": "vscode",
+	// 		"USER_UID": "1000",
+	// 		"USER_GID": "$USER_UID"
+	// 	}
+	// },
 
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
 			// Add the IDs of extensions you want installed when the container is created.
-			"extensions": [
-				"julialang.language-julia"
-			]
 		}
 	},
+	"extensions": [
+		"julialang.language-julia",
+		"JuliaComputing.pluto-vscode",
+		"wesbos.theme-cobalt2",
+		"GitHub.codespaces",
+		"IBM.output-colorizer",
+		"vscode-icons-team.vscode-icons",
+		"GitHub.copilot",
+		"GitHub.copilot-labs",
+		"eamodio.gitlens",
+		"ms-toolsai.jupyter",
+		"ms-toolsai.vscode-jupyter-powertoys",
+		"ms-toolsai.jupyter-renderers",
+		"ms-python.python"
+	],
 
+	"onCreateCommand": "bash ${containerWorkspaceFolder}/.devcontainer/dependencies.sh",
 	"postCreateCommand": "/julia-devcontainer-scripts/postcreate.jl",
+	"postStartCommand": "julia ${containerWorkspaceFolder}/.devcontainer/dependencies.jl",
+	// "initializeCommand": 	"bash ${localWorkspaceFolder}/.devcontainer/playground.sh '${localEnv:HOME}' '${localEnv:PATH}' '${localEnv:USERPROFILE}' '${containerEnv:HOME}' '${containerEnv:PATH}' '${containerEnv:USERPROFILE}' '${localWorkspaceFolder}' '${containerWorkspaceFolder}' '${localWorkspaceFolderBasename}' '${containerWorkspaceFolderBasename}'",
+	// "onCreateCommand": 		"bash ${containerWorkspaceFolder}/.devcontainer/playground.sh '${localEnv:HOME}' '${localEnv:PATH}' '${localEnv:USERPROFILE}' '${containerEnv:HOME}' '${containerEnv:PATH}' '${containerEnv:USERPROFILE}' '${localWorkspaceFolder}' '${containerWorkspaceFolder}' '${localWorkspaceFolderBasename}' '${containerWorkspaceFolderBasename}'",
+	// "updateContentCommand": "bash ${containerWorkspaceFolder}/.devcontainer/playground.sh '${localEnv:HOME}' '${localEnv:PATH}' '${localEnv:USERPROFILE}' '${containerEnv:HOME}' '${containerEnv:PATH}' '${containerEnv:USERPROFILE}' '${localWorkspaceFolder}' '${containerWorkspaceFolder}' '${localWorkspaceFolderBasename}' '${containerWorkspaceFolderBasename}'",
+	// "postCreateCommand": 	"bash ${containerWorkspaceFolder}/.devcontainer/playground.sh '${localEnv:HOME}' '${localEnv:PATH}' '${localEnv:USERPROFILE}' '${containerEnv:HOME}' '${containerEnv:PATH}' '${containerEnv:USERPROFILE}' '${localWorkspaceFolder}' '${containerWorkspaceFolder}' '${localWorkspaceFolderBasename}' '${containerWorkspaceFolderBasename}'",
+	// "postStartCommand": 	"bash ${containerWorkspaceFolder}/.devcontainer/playground.sh '${localEnv:HOME}' '${localEnv:PATH}' '${localEnv:USERPROFILE}' '${containerEnv:HOME}' '${containerEnv:PATH}' '${containerEnv:USERPROFILE}' '${localWorkspaceFolder}' '${containerWorkspaceFolder}' '${localWorkspaceFolderBasename}' '${containerWorkspaceFolderBasename}'",
+	// "postAttachCommand": 	"bash ${containerWorkspaceFolder}/.devcontainer/playground.sh '${localEnv:HOME}' '${localEnv:PATH}' '${localEnv:USERPROFILE}' '${containerEnv:HOME}' '${containerEnv:PATH}' '${containerEnv:USERPROFILE}' '${localWorkspaceFolder}' '${containerWorkspaceFolder}' '${localWorkspaceFolderBasename}' '${containerWorkspaceFolderBasename}'",
 
 	"remoteUser": "vscode"
 }
