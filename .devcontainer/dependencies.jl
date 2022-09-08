@@ -31,7 +31,7 @@ Pkg.add([
     # "Example",
     # "OdsIO",
 
-    # "Pluto",
+    "Pluto",
     # "Interact",
     # "Compose",
     # "Gadfly",

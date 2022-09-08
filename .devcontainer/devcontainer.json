@@ -4,6 +4,7 @@
 {
 	"name": "Julia (Community)",
 	"image": "ghcr.io/julia-vscode/julia-devcontainer",
+	// "image": "ghcr.io/julia-vscode/julia-devcontainer:1.7",
 	// "build":{
 	// 	// "dockerfile": "https://raw.githubusercontent.com/julia-vscode/julia-devcontainer/master/Dockerfile",
 	// 	"dockerfile": "Dockerfile",
@@ -29,6 +30,7 @@
 	"extensions": [
 		"julialang.language-julia",
 		"JuliaComputing.pluto-vscode",
+		// "esbenp.prettier-vscode",
 		"wesbos.theme-cobalt2",
 		"GitHub.codespaces",
 		"IBM.output-colorizer",
@@ -52,5 +54,9 @@
 	// "postStartCommand": 	"bash ${containerWorkspaceFolder}/.devcontainer/playground.sh '${localEnv:HOME}' '${localEnv:PATH}' '${localEnv:USERPROFILE}' '${containerEnv:HOME}' '${containerEnv:PATH}' '${containerEnv:USERPROFILE}' '${localWorkspaceFolder}' '${containerWorkspaceFolder}' '${localWorkspaceFolderBasename}' '${containerWorkspaceFolderBasename}'",
 	// "postAttachCommand": 	"bash ${containerWorkspaceFolder}/.devcontainer/playground.sh '${localEnv:HOME}' '${localEnv:PATH}' '${localEnv:USERPROFILE}' '${containerEnv:HOME}' '${containerEnv:PATH}' '${containerEnv:USERPROFILE}' '${localWorkspaceFolder}' '${containerWorkspaceFolder}' '${localWorkspaceFolderBasename}' '${containerWorkspaceFolderBasename}'",
 
-	"remoteUser": "vscode"
+	"remoteUser": "vscode",
+	"forwardPorts": [1234],
+	"features": {
+		"github-cli": "latest"
+	}
 }

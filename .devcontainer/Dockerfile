@@ -33,3 +33,7 @@ RUN mkdir -p /julia-devcontainer-scripts
 COPY ./postcreate.jl /julia-devcontainer-scripts
 
 RUN chmod +x /julia-devcontainer-scripts/postcreate.jl
+
+# Install additional packages
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && apt-get -y install --no-install-recommends bash-completion
