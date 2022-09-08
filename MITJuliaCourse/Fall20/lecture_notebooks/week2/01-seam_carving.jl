@@ -23,11 +23,11 @@ end
 begin
 	# Poor man's Project.toml
 	Pkg.add(["Images", "ImageMagick", "PlutoUI", "ImageFiltering"])
-	
+
 	using Images
 	using PlutoUI
 	using ImageFiltering
-	
+
 	# these are "Standard Libraries" - they are included in every environment
 	using Statistics
 	using LinearAlgebra
@@ -47,20 +47,20 @@ md"Select an image below!"
 
 # ╔═╡ 90f44be8-f35c-11ea-2fc6-c361fd4966af
 @bind image_url Select([
-"https://wisetoast.com/wp-content/uploads/2015/10/The-Persistence-of-Memory-salvador-deli-painting.jpg",
+	"https://wisetoast.com/wp-content/uploads/2015/10/The-Persistence-of-Memory-salvador-deli-painting.jpg",
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/Dachshund_5.JPG/640px-Dachshund_5.JPG",
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Oryx_skeleton_at_MAV-USP.jpg/614px-Oryx_skeleton_at_MAV-USP.jpg",
+	"https://upload.wikimedia.org/wikipedia/commons/f/fa/Stamp_of_Indonesia_-_1994_-_Colnect_253343_-_Skeleton_of_a_Blue_Whale_Balaenoptera_musculus.jpeg",
 
-"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Gustave_Caillebotte_-_Paris_Street%3B_Rainy_Day_-_Google_Art_Project.jpg/1014px-Gustave_Caillebotte_-_Paris_Street%3B_Rainy_Day_-_Google_Art_Project.jpg",
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Tetragonias_njalilus_01.jpg/1024px-Tetragonias_njalilus_01.jpg",
+	"https://upload.wikimedia.org/wikipedia/commons/1/14/Image-Blue_Whale_and_Hector_Dolphine_Colored.jpg",
 
-"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Gustave_Caillebotte_-_Paris_Street%3B_Rainy_Day_-_Google_Art_Project.jpg/1014px-Gustave_Caillebotte_-_Paris_Street%3B_Rainy_Day_-_Google_Art_Project.jpg",
-
-"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg/480px-Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg",
-		"https://wisetoast.com/wp-content/uploads/2015/10/The-Persistence-of-Memory-salvador-deli-painting.jpg",
-
-"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg/640px-A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg",
-
-"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/758px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
-		"https://web.mit.edu/facilities/photos/construction/Projects/stata/1_large.jpg",
-	])
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/Gustave_Caillebotte_-_Paris_Street%3B_Rainy_Day_-_Google_Art_Project.jpg/1014px-Gustave_Caillebotte_-_Paris_Street%3B_Rainy_Day_-_Google_Art_Project.jpg",
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/c/cc/Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg/480px-Grant_Wood_-_American_Gothic_-_Google_Art_Project.jpg",
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/7/7d/A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg/640px-A_Sunday_on_La_Grande_Jatte%2C_Georges_Seurat%2C_1884.jpg",
+	"https://upload.wikimedia.org/wikipedia/commons/thumb/e/ea/Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg/758px-Van_Gogh_-_Starry_Night_-_Google_Art_Project.jpg",
+	"https://web.mit.edu/facilities/photos/construction/Projects/stata/1_large.jpg",
+])
 
 # ╔═╡ d2ae6dd2-eef9-11ea-02df-255ec3b46a36
 img = load(download(image_url))
@@ -140,12 +140,12 @@ end
 # ╔═╡ fcf46120-efec-11ea-06b9-45f470899cb2
 function convolve(M, kernel)
     height, width = size(kernel)
-    
+
     half_height = height ÷ 2
     half_width = width ÷ 2
-    
+
     new_image = similar(M)
-	
+
     # (i, j) loop over the original image
 	m, n = size(M)
     @inbounds for i in 1:m
@@ -168,14 +168,14 @@ function convolve(M, kernel)
 					elseif Mj > n
 						Mj = n
 					end
-					
+
 					accumulator += kernel[k, l] * M[Mi, Mj]
 				end
 			end
 			new_image[i, j] = accumulator
         end
     end
-    
+
     return new_image
 end
 
@@ -228,9 +228,9 @@ a matrix of minimum possible energy starting from that pixel going up to a pixel
 """
 
 # ╔═╡ acc1ee8c-eef9-11ea-01ac-9b9e9c4167b3
-#            e[x,y] 
+#            e[x,y]
 #          ↙   ↓   ↘       <--pick the next path which gives the least overall energy
-#  e[x-1,y+1] e[x,y+1]  e[x+1,y+1]     
+#  e[x-1,y+1] e[x,y+1]  e[x+1,y+1]
 #
 # Basic Comp:   e[x,y] += min( e[x-1,y+1],e[x,y],e[x+1,y])
 #               dirs records which one from (-1==SW,0==S,1==SE)
@@ -371,7 +371,7 @@ md"shrunk by $n:"
 function hbox(x, y, gap=16; sy=size(y), sx=size(x))
 	w,h = (max(sx[1], sy[1]),
 		   gap + sx[2] + sy[2])
-	
+
 	slate = fill(RGB(1,1,1), w,h)
 	slate[1:size(x,1), 1:size(x,2)] .= RGB.(x)
 	slate[1:size(y,1), size(x,2) + gap .+ (1:size(y,2))] .= RGB.(y)
@@ -424,7 +424,7 @@ let
 	∇x = convolve(brightness.(img), Sx)
 	# zoom in on the clock
 	vbox(
-		hbox(img[300:end, 1:300], img[300:end, 1:300]), 
+		hbox(img[300:end, 1:300], img[300:end, 1:300]),
 	 	hbox(show_colored_array.((∇x[300:end,  1:300], ∇y[300:end, 1:300]))...)
 	)
 end
