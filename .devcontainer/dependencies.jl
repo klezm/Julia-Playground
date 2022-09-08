@@ -16,73 +16,43 @@ Pkg.build("IJulia")
 Pkg.add([
     "DataFrames",
     # "CSV",
-    # "DelimitedFiles",
 
-    "Plots",
-    # "PyPlot.jl",
-    # "PlotlyJS",
-    # "UnicodePlots",
-    # "Colors",
+    "Plots", # Deps: Colors LaTeXStrings
+    # # "Gadfly",
+    # # "PyPlot.jl",
+    # # "PlotlyJS",
+    # # "UnicodePlots",
+    # "ColorVectorSpace",
+    # # "LightGraphs",
+    # # "Compose",
+    # # "GraphPlot", # Deps: Compose DelimitedFiles
+    # # "VegaLite",
+    # # "VegaDatasets",
 
-    "PyCall",
-    # "Conda",
-
+    "PyCall", # Deps: Conda
     # "BenchmarkTools",
-    # "Example",
-    # "OdsIO",
 
-    "Pluto",
+    # # "Example",
+
+    "Pluto", # Deps: InteractiveUtils
     "PlutoUI",
-    # "Interact",
-    # "Compose",
-    # "Gadfly",
+    # "PlutoTest",
+    # # "Interact",
 
-    "Images",
-    # "QuartzImageIO",
-    # "ImageMagick",
+    # "Images", # Deps: FileIO ImageIO ImageFiltering ImageMagick # 2nd Deps: OffsetArrays
 
-    # "Clustering",
-    # "MultivariateStats",
-    # "ForwardDiff",
+    # # "Primes",
+    # # "Clustering",
+    # # "GLM", # Deps: Distributions
+    # # "Distributions", # Deps: StatsBase SpecialFunctions
+    # # "MultivariateStats",
+    # # "Unitful",
+    # # "ForwardDiff",
 
-    # "Primes",
+    # "MappedArrays",
 
-
-    # MIT Spring21
-    "Markdown",
-    "InteractiveUtils",
-    "Compose",
-    "ImageMagick",
-    "ImageFiltering",
-    "SpecialFunctions",
-    "VegaLite",
-    "VegaDatasets",
-    "HypertextLiteral",
-    "Colors",
-    "ColorVectorSpace",
-    "ImageShow",
-    "FileIO",
-    "ImageIO",
-    "LinearAlgebra",
-    "StatsBase",
-    "Statistics",
-    "DifferentialEquations",
-    "MappedArrays",
-    "libraries",
-    "PlutoTest",
-    "CSV",
-    "LaTeXStrings",
-    "Random",
-    "Distributions",
-    "OffsetArrays",
-    "ForwardDiff",
-    "Unitful",
-    "Symbolics",
-    "NonlinearSolve",
-    "BenchmarkTools",
-    "SparseArrays",
-    "LightGraphs",
-    "GraphPlot",
-    "Printf",
-    "GLM",
-])
+    # # Takes long to install!
+    # # "DifferentialEquations",
+    # # "NonlinearSolve",
+    # # "Symbolics",
+    ])

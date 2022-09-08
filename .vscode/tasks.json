@@ -13,6 +13,12 @@
             "type": "shell",
             // "command": "julia -e \"using Pluto; Pluto.run(launch_browser = true, require_secret_for_access = false)\""
             "command": "julia -e \"using Pluto; Pluto.run(launch_browser = true)\""
+        },
+        {
+            "label": "reset julia environment",
+            "type": "shell",
+            // "command": "rm ~/.julia/environments/v1.8/*.toml"
+            "command": "rm -rf ~/.julia"
         }
     ]
 }
