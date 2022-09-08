@@ -5,7 +5,7 @@
 - https://julialang.org/learning/
 - https://github.com/search?q=julia+tutorial
     - https://github.com/mitmath/julia-mit
-    - https://github.com/mitmath/18S191
+    - https://github.com/mitmath/18S191 ([Fall20](MITJuliaCourse/Fall20)) ([Spring21](MITJuliaCourse/Spring21))
         - https://computationalthinking.mit.edu/
     - https://github.com/storopoli/Julia-Workshop
     - https://github.com/sylvaticus/juliatutorial ([local copy](juliatutorial))
